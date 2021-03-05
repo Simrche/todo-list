@@ -40,7 +40,7 @@ export default {
                 this.tasks[index].checked = true;
             } else {
                 this.tasks[index].checked = false;
-            }            
+            }
         },
 
         plurial() {
@@ -59,6 +59,7 @@ export default {
                 if(this.tasks[index].checked === true) {
                     this.tasks.splice(index, 1)
                     index--
+                    console.log(this.tasks)
                 }
             }
         }

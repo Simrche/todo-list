@@ -5,7 +5,8 @@
         <li v-for="(titre, index) in tasks" :key="(titre, index)" class="list">
             <div>
                 <p class="index">{{ index+1 }}. </p>
-                <input type="checkbox" v-on:click="check(index)" value='s'>
+                <input type="checkbox" v-on:click="check(index)" v-if="titre.checked === true" checked>
+                <input type="checkbox" v-on:click="check(index)" v-if="titre.checked === false">
                 <p v-bind:class="{'check': titre.checked}">{{titre.titre}}</p>
             </div>
             <button class="trash" v-on:click='remover(index)'>🚮</button>
