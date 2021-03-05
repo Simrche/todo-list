@@ -25,9 +25,11 @@ export default {
         check(index) {
             this.$emit('checked', index)
         },
+
         deleteAll() {
             this.$emit('deleteAll')
         },
+        
         deleteSelect() {
             this.$emit('deleteSelect')
         }

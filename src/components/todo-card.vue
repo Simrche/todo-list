@@ -54,16 +54,14 @@ export default {
             this.tasks.splice(0, this.tasks.length)
             this.numberTask = 0;
         },
-        // deleteSelect() {
-        //     this.tasks.forEach(element => {
-        //         let i = 0
-        //         if(element.checked === true) {
-        //             this.tasks.splice(i,1)
-        //             this.deleteSelect()
-        //         }
-        //         i++
-        //     });
-        // }
+        deleteSelect() {
+            for (let index = 0; index < this.tasks.length; index++) {
+                if(this.tasks[index].checked === true) {
+                    this.tasks.splice(index, 1)
+                    index--
+                }
+            }
+        }
 
     },
     computed: {
