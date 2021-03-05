@@ -1,9 +1,11 @@
 <template>
+    <button v-on:click='deleteAll()'>Tout supprimer</button>
+    <button v-on:click='deleteSelect()'>Supprimer tâches séléctionés</button>
     <ul>
         <li v-for="(titre, index) in tasks" :key="(titre, index)" class="list">
             <div>
                 <p class="index">{{ index+1 }}. </p>
-                <input type="checkbox" v-on:click="check(index)">
+                <input type="checkbox" v-on:click="check(index)" value='s'>
                 <p v-bind:class="{'check': titre.checked}">{{titre.titre}}</p>
             </div>
             <button class="trash" v-on:click='remover(index)'>🚮</button>
@@ -22,6 +24,12 @@ export default {
 
         check(index) {
             this.$emit('checked', index)
+        },
+        deleteAll() {
+            this.$emit('deleteAll')
+        },
+        deleteSelect() {
+            this.$emit('deleteSelect')
         }
     }
 }

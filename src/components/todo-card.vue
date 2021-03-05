@@ -3,10 +3,10 @@
         <div id="haut">
             <div id="date">{{ date }}</div>
             <div id="msg"><h2>{{ msg }}</h2></div>
-            <div id="numberTask">{{ numberTask }} tâches</div>
+            <div id="numberTask" v-on="plurial()">{{ numberTask }}{{msgTask}}</div>
         </div>
         <new-todo @custom-event-name='setMessage'></new-todo>
-        <todo-list :tasks="tasks" @numberIndexRemove='removeTask' @checked='check'></todo-list>
+        <todo-list :tasks="tasks" @numberIndexRemove='removeTask' @checked='check' @deleteAll='deleteAll' @deleteSelect='deleteSelect'></todo-list>
     </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
     data() {
         return {
             msg: "VueJs Tutorial ToDo List",
+            msgTask: " tâche",
             numberTask: 0,
             tasks: [],
         }
@@ -39,9 +40,31 @@ export default {
                 this.tasks[index].checked = true;
             } else {
                 this.tasks[index].checked = false;
+            }            
+        },
+
+        plurial() {
+            if(this.tasks.length > 1){
+                this.msgTask = " tâches"
+            } else {
+                this.msgTask = " tâche"
             }
-            
-        }
+        },
+        deleteAll() {
+            this.tasks.splice(0, this.tasks.length)
+            this.numberTask = 0;
+        },
+        // deleteSelect() {
+        //     this.tasks.forEach(element => {
+        //         let i = 0
+        //         if(element.checked === true) {
+        //             this.tasks.splice(i,1)
+        //             this.deleteSelect()
+        //         }
+        //         i++
+        //     });
+        // }
+
     },
     computed: {
         date: function() {

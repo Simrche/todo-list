@@ -1,3 +1,7 @@
+## Pour utiliser le projet :##
+
+- Clone le repository
+- Install les nodes_modules avec la commande 'npm install'
 
 # Construction d'une Todo List
 
@@ -116,4 +120,3 @@ Voilà notre TodoList est prête et fonctionnel!
 - Permettre de supprimer toutes les tâches terminées.
 - Permettre de permuter les éléments de la liste.
 - Rajouter une animation lors de l'ajout oû suppression de données.
-
